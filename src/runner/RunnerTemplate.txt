@@ -1,0 +1,63 @@
+package runner;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import utility.InputUtility;
+import utility.LoggerUtility;
+
+public class <ClassName> {
+
+	public static Logger logger = null;
+	static {
+		try {
+			logger = LoggerUtility.getNewLogger(<ClassName>.class.getName());
+			logger.setLevel(Level.INFO);
+			LoggerUtility.addFileHandler(logger, logger.getName(), LoggerUtility.DEFAULT_FILE_PATH);
+		} catch (Exception e) {
+			LoggerUtility.DEFAULT_LOGGER.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+	
+	public static void main(String ...args) {
+		boolean isProgramActive = true;
+		int numberOfQuestions = 20;
+
+		logger.info("Runner Program");
+		logger.info("The following are the list of operations : ");
+		while (isProgramActive) {
+			
+			logger.info("1"
+				+ "\nTo exit, enter 0"
+				+ "\n\n-----------------------------------------------------------------");
+
+			int choice = -1;
+			do {
+				try {
+					logger.info("Enter your choice (0 to " + numberOfQuestions + "): ");
+					choice = InputUtility.getIntInput();
+				} catch (Exception e) {
+					logger.info(e.getMessage());
+				}
+			} while (choice < 0 || choice > numberOfQuestions);
+
+			try {
+				switch (choice) {
+				case 0:
+					isProgramActive = false;
+					logger.info("Thank you for using the program");
+					InputUtility.closeScanner();
+					break;
+
+				default:
+					logger.info("The choice is invalid");
+					break;
+				}
+			} catch (Exception e) {
+				logger.info(e.getMessage());
+			}
+			logger.info("=================================================================");
+
+		}
+	}
+}
