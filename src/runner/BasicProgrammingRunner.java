@@ -51,6 +51,7 @@ public class BasicProgrammingRunner {
 			int choice = -1;
 			do {
 				try {
+					
 					logger.info("Enter your choice (0 to " + numberOfQuestions + "): ");
 					choice = InputUtil.getIntInput();
 					if (choice < 0 || choice > numberOfQuestions) {

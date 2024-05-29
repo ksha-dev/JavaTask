@@ -9,6 +9,8 @@ public class Swift extends Car {
 	private final static int maxSeats = 5;
 	private final static int maxAirbags = 6;
 
+
+
 	private int seats;
 	private int airbags;
 	private String model;
